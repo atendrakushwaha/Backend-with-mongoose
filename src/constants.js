@@ -1,1 +1,1 @@
-export const  DB_NAME = "normal"
+export const  DB_NAME = "Student"
