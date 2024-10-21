@@ -34,7 +34,7 @@ const registerUser = asyncHandler(async (req, res) => {
     }
    
 
-   const existedUser =  User.findOne({
+   const existedUser = await  User.findOne({
       //operetur
       $or :[{ username },{ email }]
     })
@@ -70,11 +70,11 @@ const registerUser = asyncHandler(async (req, res) => {
     coverImage :coverImage?.url || "",
     email ,
     password,
-    username : username.toLowercase()
+    username : username.toLowerCase()
    })
    
   const createdUser = await User.findById(user._id).select(
-    "_password -refreshToken"
+    "-password -refreshToken"
   )
 
 if (!createdUser) {
